@@ -5,6 +5,7 @@ describe('Calculator', () => {
   beforeEach(async () => {
     const Calculator = await ethers.getContractFactory('Calculator')
     const calculator = await Calculator.deploy()
+    await calculator.deployed()
   });
 
   describe('Addition', () => {
