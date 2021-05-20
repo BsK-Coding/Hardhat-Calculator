@@ -2,13 +2,10 @@
 
 pragma solidity ^0.8.0;
 
-// import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol";
-
 contract Calculator {
     /* STATE VARIABLES */
     mapping(address => uint256) private _balances;
     address private _owner;
-    uint256 private _counter;
 
     /* EVENTS */
     event Add(address indexed account, int256 nb1, int256 nb2, int256 res);
@@ -33,20 +30,17 @@ contract Calculator {
 
     /* FUNCTIONS */
     function add(int256 nb1, int256 nb2) public returns (int256) {
-        _counter++;
         emit Add(msg.sender, nb1, nb2, nb1 + nb2);
         return nb1 + nb2;
     }
 
     function sub(int256 nb1, int256 nb2) public returns (int256) {
-        _counter++;
-        emit Sub(msg.sender, nb1, nb2, nb1 + nb2);
+        emit Sub(msg.sender, nb1, nb2, nb1 - nb2);
         return nb1 - nb2;
     }
 
     function mul(int256 nb1, int256 nb2) public returns (int256) {
-        _counter++;
-        emit Mul(msg.sender, nb1, nb2, nb1 + nb2);
+        emit Mul(msg.sender, nb1, nb2, nb1 * nb2);
         return nb1 * nb2;
     }
 
@@ -55,19 +49,13 @@ contract Calculator {
             nb2 > 0,
             "Le second nombre (Dividende) doit etre different de 0 et positif"
         );
-        _counter++;
-        emit Div(msg.sender, nb1, nb2, nb1 + nb2);
+        emit Div(msg.sender, nb1, nb2, nb1 / nb2);
         return nb1 / nb2;
     }
 
     function mod(int256 nb1, int256 nb2) public returns (int256) {
-        _counter++;
-        emit Mod(msg.sender, nb1, nb2, nb1 + nb2);
+        emit Mod(msg.sender, nb1, nb2, nb1 % nb2);
         return nb1 % nb2;
-    }
-
-    function counter() public view returns (uint256) {
-        return _counter;
     }
 
     function balances() public view returns (uint256) {

@@ -1,74 +1,39 @@
 const { expect } = require('chai');
 
-describe('Calculator Tests', () => {
-  let owner, counter, addr1, addr2;
+describe('Calculator', () => {
 
   beforeEach(async () => {
-    Calculator = await ethers.getContractFactory('Calculator');
-    [owner, counter, addr1, addr2, ...addrs] = await ethers.getSigners();
-    calculator = await Calculator.deploy();
+    const Calculator = await ethers.getContractFactory('Calculator')
+    const calculator = await Calculator.deploy()
   });
 
-  describe('Calculate', () => {
-    it()
+  describe('Addition', () => {
+    it('Should add 2 numbers', async () => {
+      expect(await calculator.add(nb1, nb2)).to.equal(nb1 + nb2)
+    })
   })
 
-  /* Brouillon aide */
-  // describe('Deployment', () => {
-  //   it('Should set the right owner', async function () {
-  //     expect(await token.owner()).to.equal(owner.address);
-  //   });
+  describe('Soustraction', () => {
+    it('should sub 2 numbers', async () => {
+      expect(await calculator.sub(nb1, nb2)).to.equal(nb1 - nb2)
+    })
+  })
 
-  //   it('Should assign the total supply of tokens to the owner', async () => {
-  //     const ownerBalance = await token.balanceOf(owner.address);
-  //     expect(await token.totalSupply()).to.equal(ownerBalance);
-  //   });
-  // });
+  describe('Multiplication', () => {
+    it('Should multiply 2 numbers', async () => {
+      expect(await calculator.mul(nb1, nb2)).to.equal(nb1 * nb2)
+    })
+  })
 
-  // describe('Transactions', () => {
-  //   it('Should transfer tokens between accounts', async () => {
-  //     await token.transfer(addr1.address, 50);
-  //     const addr1Balance = await token.balanceOf(addr1.address);
-  //     expect(addr1Balance).to.equal(50);
+  describe('Division', () => {
+    it('Should divide 2 numbers', async () => {
+      expect(await calculator.div(nb1, nb2)).to.equal(nb1 / nb2)
+    })
+  })
 
-  //     await token.connect(addr1).transfer(addr2.address, 50);
-  //     const addr2Balance = await token.balanceOf(addr2.address);
-  //     expect(addr2Balance).to.equal(50);
-  //   });
-
-  //   it('Should fail if sender doesn’t have enough tokens', async () => {
-  //     const initialOwnerBalance = await token.balanceOf(owner.address);
-
-  //     await expect(
-  //       token
-  //         .connect(addr1)
-  //         .transfer(owner.address, 1)
-  //     )
-  //       .to
-  //       .be
-  //       .revertedWith('Not enough tokens');
-
-  //     expect(
-  //       await token.balanceOf(owner.address)
-  //     )
-  //       .to
-  //       .equal(initialOwnerBalance);
-  //   });
-
-  //   it('Should update balances after transfers', async () => {
-  //     const initialOwnerBalance = await token.balanceOf(owner.address);
-
-  //     await token.transfer(addr1.address, 100);
-  //     await token.transfer(addr2.address, 50);
-
-  //     const finalOwnerBalance = await token.balanceOf(owner.address);
-  //     expect(finalOwnerBalance).to.equal(initialOwnerBalance - 150);
-
-  //     const addr1Balance = await token.balanceOf(addr1.address);
-  //     expect(addr1Balance).to.equal(100);
-
-  //     const addr2Balance = await token.balanceOf(addr2.address);
-  //     expect(addr2Balance).to.equal(50);
-  //   });
-  // });
-});
+  describe('Modulo', () => {
+    it('Should give the remainder of a division of 2 numbers ', async () => {
+      expect(await calculator.mod(nb1, nb2)).to.equal(nb1 % nb2)
+    })
+  })
+})
