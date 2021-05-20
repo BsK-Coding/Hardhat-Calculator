@@ -1,0 +1,39 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/bsk/Alyra/HardHat/Hardhat-Calculator/contracts/Calculator.sol": {
+      "lastModificationDate": 1621530682340,
+      "contentHash": "11cf900909bf30121aba7b40b3b0c74e",
+      "sourceName": "contracts/Calculator.sol",
+      "solcConfig": {
+        "version": "0.8.4",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Calculator"
+      ]
+    }
+  }
+}
