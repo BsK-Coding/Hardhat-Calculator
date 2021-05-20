@@ -27,6 +27,9 @@ describe('Calculator', () => {
   })
 
   describe('Division', () => {
+    it('Should be different from 0', async () => {
+      expect(await calculator.div(nb2)).to.equal(0)
+    })
     it('Should divide 2 numbers', async () => {
       expect(await calculator.div(nb1, nb2)).to.equal(nb1 / nb2)
     })
